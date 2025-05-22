@@ -1,0 +1,67 @@
+// Use DBML to define your database structure
+// Docs: https://dbml.dbdiagram.io/docs
+
+Table PRODUCT {
+  ProductID integer [primary key]
+  Name string
+  Description string
+  Price decimal
+  Category string
+  ImageURL string
+}
+
+Table USER  {
+  UserID integer [primary key]
+  Name string
+  Email string
+  Password string
+  ShippingAddress string
+  PaymentDetails string
+}
+
+Table CARTITEM  {
+  CartItemID integer [primary key]
+  ProductID int
+  UserID int
+  Quantity int
+  TotalPrice decimal
+}
+ 
+Table ORDER {
+  OrderID int [primary key]
+  UserID int
+  decimal TotalPrice
+  string ShippingAddress
+  OrderStatus string
+  PaymentStatus string
+  OrderDate timestamp
+}
+
+Table ORDERITEM {
+  OrderItemID int [primary key]
+  OrderID int 
+  ProductID int 
+  Quantity int
+  Price decimal
+}
+ 
+    
+ 
+Table ADMIN {
+  AdminID int [primary key]
+  Name string
+  Role string
+  Permissions string
+}
+ 
+Ref Part_of: PRODUCT.ProductID < ORDERITEM.ProductID
+
+Ref Has: USER.UserID < CARTITEM.UserID
+
+Ref Places: USER.UserID < ORDER.UserID
+
+Ref Included_in : PRODUCT.ProductID < CARTITEM.ProductID
+
+Ref Contains: ORDER.OrderID < ORDERITEM.OrderID
+
+
