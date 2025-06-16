@@ -1,0 +1,257 @@
+Concepts Covered:
+
+String Manipulation
+Classes and Objects
+Collection Frameworks
+
+
+Problem Description:
+
+'City Real Estate' a famous real estate business group in the city wants to automate their day-to-day property sales details.  They also want to identify and list the booking details of various types of properties.  
+
+You being their software consultant have been approached to develop an application that can be used for managing their business. 
+
+Note: The class contains some attributes and all the attributes should be private.
+
+ 
+
+Requirement 1: Define  required members in the Property class
+
+ Component Specification: Property (Model Class)
+
+Type(Class)
+
+Attributes
+
+Type of attributes
+
+Values
+
+Property
+
+booking_id
+
+customer_name
+
+property_type
+
+property_cost
+
+string
+
+string
+
+integer
+
+float   - the default value should be 0.0
+
+User input
+
+User input
+
+User input
+
+Should be a calculated value
+
+ 
+
+Type(Class)
+
+Methods
+
+Responsibilities
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+Property
+
+ 
+
+A parameterized constructor with 3 arguments:  booking_id, customer_name, and property_type respectively
+
+ To initialize the private member variables: booking_id,customer_name, property_type, and property_cost.  The default value for property_cost should be set as 0.0
+
+ 
+
+Included necessary getters and setters for the private attributes
+
+ 
+
+ 
+
+calculate_property_cost(self)
+
+This method should  calculate and set the value for the  'property_cost' private member variable using the attribute 'property_type' based on certain criteria given below:
+
+If property_type is 1, the building cost should be set as 30,00,000.
+
+If property_type is 2, the building cost should be set as 50,00,000.
+
+For any property type other than 1 and 2, the building cost should be 100,00,000
+
+GST for the property is 10% of the building cost.
+
+For any type of property, the corpus fund should be 1,00,000.
+
+ 
+
+The property cost should be the sum of the building cost, GST, and corpus fund.
+
+ 
+
+Requirement 2: Store the Property Details
+
+Whenever property sales happen, the corresponding details need to be stored for future reference.
+
+The method 'add_property_details()'  should create a 'Property' object using the parameterized constructor and set the values to the required attributes using the arguments passed to this method.  Then calculate and set the property_cost by invoking the 'calculate_property_cost()'  method in the 'Property' class and add this 'Property' object to the property_list.
+
+Component Specification: PropertyManagement (Utility Class)
+
+Component Name
+
+Type(Class)
+
+Attributes
+
+ Type of attributes
+
+Methods
+
+Responsibilities
+
+ 
+
+ PropertyManagement  
+
+property_list 
+
+  List
+
+ 
+
+Add Property Object
+
+ PropertyManagement
+
+ 
+
+ 
+
+add_property_details (self,booking_id,  customer_name,  property_type)
+
+This method has to create a Property object, calculate and set the property_cost by invoking the appropriate function, and add that object to the property_list.
+
+ 
+
+
+
+Requirement 3: View the property details based on property type
+
+The organization wants to verify the booking details of different properties booked by the customers over a period of time.   
+
+The method 'view_property_details()' identifies the property objects from property_list based on the requested property type passed as an argument to the 'view_property_details()' method in the 'PropertyManagement' class.  Fetch the objects with the specified property type, store them in another list, and return the same.
+
+Component Specification: PropertyManagement(Utility Class)
+
+Component Name
+
+Type(Class)
+
+Attributes
+
+Methods
+
+Responsibilities
+
+View property details of a particular type
+
+PropertyManagement
+
+ 
+
+view_property_details (self,property_type)
+
+This method has to identify the property objects from the property_list based on the property type entered. Fetch those objects and add them to another list and return the same.
+
+ 
+
+ 
+
+Process flow:
+
+The file 'main.py'  is to get the user inputs for the number of properties required and each property's details.
+The user inputs for property details should be in the form of a string with the format: property_id:customer_name:property_type
+Parse these property details by invoking the add_property_details() method in the PropertyManagement class.
+After all the property records are parsed and added to the list, get the input for the property type to be searched from the user, and invoke the 'view_property_details()' method.  If the list returned by this method is empty then display the message "No property found", otherwise display the property details as shown in the sample input/output statements.
+Note:
+
+In the sample Input / Output provided, the highlighted text in bold corresponds to the inputs given by the user, and the rest of the text represents the output.
+Ensure to provide the names for classes, attributes, and methods as specified in the question description.
+Adhere to the code template, if provided, and do not edit or delete the codes provided in the code template.
+ 
+
+Sample Input  1:
+
+Enter the number of properties required: 4
+
+Enter the property details 1:
+
+BK101:John Abraham:1
+
+Enter the property details 2:
+
+BK125:Adam:2
+
+Enter the property details 3:
+
+BK128:Mathew:5
+
+Enter the property details 4:
+
+BK321:Samuel John:2
+
+Enter the property type to be searched: 2
+
+
+
+Sample output 1:
+
+No. of properties: 2
+
+Booking Id: BK125
+Customer Name: Adam
+Property Cost: 5600000.0
+ 
+Booking Id: BK321
+Customer Name: Samuel John
+Property Cost: 5600000.0
+
+
+
+
+Sample Input  2:
+
+Enter the number of properties required: 1
+
+Enter the property details 1:
+
+BK890:Ronn:3
+
+Enter the property type to be searched: 1
+
+
+
+Sample output 2:
+
+No property found
+
+ 
+
